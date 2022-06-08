@@ -3542,16 +3542,8 @@ echo -n install LDP_man-pages: gcvt.3 ..
 install -o USERNAME -g admin -m 644 manual/LDP_man-pages/man3/gcvt.3 CELLAR_PATH/man3
 echo done.
 
-echo -n install gdb: gdb.1 .. 
-install -o USERNAME -g admin -m 644 manual/gdb/man1/gdb.1 CELLAR_PATH/man1
-echo done.
-
 echo -n install GNU_gdbm: gdbm.3 .. 
 install -o USERNAME -g admin -m 644 manual/GNU_gdbm/man3/gdbm.3 CELLAR_PATH/man3
-echo done.
-
-echo -n install gdb: gdbserver.1 .. 
-install -o USERNAME -g admin -m 644 manual/gdb/man1/gdbserver.1 CELLAR_PATH/man1
 echo done.
 
 echo -n install LDP_man-pages: get_current_dir_name.3 .. 
