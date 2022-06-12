@@ -14,7 +14,7 @@ class ManJapanese < Formula
 
   resource "installman" do
     url "https://raw.githubusercontent.com/sh0nk/homebrew-tap/main/manj/installman.sh"
-    sha256 "406074651b40befbcb8efcb2f1a340ca4da829ca56a731d5edadf6d5e72a58d7"
+    sha256 "ac2dbf29ee50cf283c27470f0a6302e3cd0e7e5817dcc9e34c65f8f7f590ca9a"
   end
 
   def install
@@ -23,13 +23,9 @@ class ManJapanese < Formula
     end
 
     manj_path = prefix/"manj"
-    inreplace "installman.sh" do |s|
-      s.gsub! "USERNAME", ENV["USER"]
-      s.gsub! "CELLAR_PATH", manj_path
-    end
-
     mkdir_p manj_path
-    system "bash", "-e", "installman.sh"
+    ENV["CELLAR_PATH"] = manj_path
+    system "bash", "-e", "installman.s"
 
     # Handle man.conf
     cp("/etc/man.conf", buildpath/"manj.conf")
