@@ -25,7 +25,7 @@ class ManJapanese < Formula
     manj_path = prefix/"manj"
     mkdir_p manj_path
     ENV["CELLAR_PATH"] = manj_path
-    system "bash", "-e", "installman.s"
+    system "bash", "-e", "installman.sh"
 
     # Handle man.conf
     cp("/etc/man.conf", buildpath/"manj.conf")
@@ -39,7 +39,7 @@ class ManJapanese < Formula
     # Prepare bin
     (buildpath/"manj").write <<~EOS
       #!/bin/sh
-      env LANG=ja_JP.UTF-8 man -C #{etc.to_s}/manj.conf $@
+      env LANG=ja_JP.UTF-8 MANPATH=#{manj_path.to_s}:$MANPATH man -C #{etc.to_s}/manj.conf $@
     EOS
     bin.install "manj"
   end
