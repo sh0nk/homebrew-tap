@@ -22,7 +22,7 @@ class ManJapanese < Formula
       cp("installman.sh", buildpath)
     end
 
-    manj_path = prefix/"manj"
+    manj_path = prefix/"manj"/"ja_JP.UTF-8"
     mkdir_p manj_path
     ENV["CELLAR_PATH"] = manj_path
     system "bash", "-e", "installman.sh"
