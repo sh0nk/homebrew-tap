@@ -4,7 +4,6 @@ on:
   schedule:
     - cron: '0 21 14 * *' # 15th 6am JST
   
-
 jobs:
   build:
     runs-on: ubuntu-latest
