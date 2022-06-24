@@ -1,8 +1,10 @@
 name: Periodical Update - man_japanese
 
 on:
-  schedule:
-    - cron: '0 21 14 * *' # 15th 6am JST
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '0 21 14 * *' # 15th 6am JST
+  
 
 jobs:
   build:
