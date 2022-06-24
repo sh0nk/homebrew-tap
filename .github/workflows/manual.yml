@@ -25,6 +25,6 @@ jobs:
     - name: Replace file 
       run: |
         cp manj/man-japanese.rb.template Formula/man-japanese.rb
-        sed -i "s/REPLACE_URL/${{ steps.set_url.outputs.URL }}/g" Formula/man-japanese.rb
-        sed -i "s/REPLACE_HASH/${{ steps.set_url.download_file.HASH }}/g" Formula/man-japanese.rb
+        sed -i -e "s/REPLACE_URL/${{ steps.set_url.outputs.URL }}/g" Formula/man-japanese.rb
+        sed -i -e "s/REPLACE_HASH/${{ steps.set_url.download_file.HASH }}/g" Formula/man-japanese.rb
         
