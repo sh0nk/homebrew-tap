@@ -27,4 +27,10 @@ jobs:
         cp manj/man-japanese.rb.template Formula/man-japanese.rb
         sed -i -e "s|REPLACE_URL|${{ steps.set_url.outputs.URL }}|g" Formula/man-japanese.rb
         sed -i -e "s/REPLACE_HASH/${{ steps.download_file.outputs.HASH }}/g" Formula/man-japanese.rb
-        
+    - name: Update git
+      run: |
+        git add --update
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git commit -m "Update man-japanese formula for $(date "+%Y%m")"
+        git push
