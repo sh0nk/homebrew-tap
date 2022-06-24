@@ -21,7 +21,7 @@ jobs:
       id: download_file
       run: |
         curl ${{ steps.set_url.outputs.URL }} -o downloaded
-        echo "::set-output name=HASH::$(sha256sum downloaded)"
+        echo "::set-output name=HASH::$(sha256sum downloaded | cut -f1 -d' ')"
     - name: Replace file 
       run: |
         cp manj/man-japanese.rb.template Formula/man-japanese.rb
