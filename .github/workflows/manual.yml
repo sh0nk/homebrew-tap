@@ -1,0 +1,34 @@
+name: Periodical Update - man_japanese
+
+on:
+  schedule:
+    - cron: '0 21 14 * *' # 15th 6am JST
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - name: Checkout local
+      uses: actions/checkout@v2
+    - name: Set URL
+      id: set_url
+      run: echo "::set-output name=URL::http://linuxjm.osdn.jp/man-pages-ja-$(date "+%Y%m")15.tar.gz"
+    - name: Download file
+      id: download_file
+      run: |
+        curl ${{ steps.set_url.outputs.URL }} -o downloaded
+        echo "::set-output name=HASH::$(sha256sum downloaded | cut -f1 -d' ')"
+    - name: Replace file 
+      run: |
+        cp manj/man-japanese.rb.template Formula/man-japanese.rb
+        sed -i -e "s|REPLACE_URL|${{ steps.set_url.outputs.URL }}|g" Formula/man-japanese.rb
+        sed -i -e "s/REPLACE_HASH/${{ steps.download_file.outputs.HASH }}/g" Formula/man-japanese.rb
+    - name: Update git
+      run: |
+        git add --update
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git commit -m "Update man-japanese formula for $(date "+%Y%m")"
+        git push
