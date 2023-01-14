@@ -4,8 +4,8 @@
 class ManJapanese < Formula
   desc ""
   homepage ""
-  url "http://linuxjm.osdn.jp/man-pages-ja-20221215.tar.gz"
-  sha256 "0c20d6d543588d3e588346464679175dba237b5129d337b8fdfa48800ea28280"
+  url "http://linuxjm.osdn.jp/man-pages-ja-20230115.tar.gz"
+  sha256 "f57bc2a8b11ade503af94925e7c8e9aad7b58fc70131f735434886bbb8c95bd4"
   license ""
 
   depends_on "groff"
